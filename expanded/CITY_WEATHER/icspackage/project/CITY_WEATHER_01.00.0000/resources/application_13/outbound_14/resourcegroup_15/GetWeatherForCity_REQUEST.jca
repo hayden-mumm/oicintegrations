@@ -1,0 +1,40 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST/types" name="GetWeatherForCity_REQUESTPortType" adapter="REST" wsdlLocation="GetWeatherForCity_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.rest.RestAdapterConnectionFactory">
+      <property name="cloud.adapter.plugin.version" value="22.0.1"/>
+      <property name="cloud.adapter.sdk.version" value="22.0.1"/>
+      <property name="connectionUrl" value="%%OPENWEATHERMAP2_connectionUrl"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+      <property name="csfkey" value="3db7c00cd0529c96c8f061f556c633a09266133790d0bf49d23c1bde1840cb4d"/>
+      <property name="securityPolicy" value="CUSTOM_SINGLE_TOKEN"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-activation portType="GetWeatherForCity_REQUESTPortType" operation="execute">
+    <activation-spec className="oracle.tip.adapter.cloud.CloudActivationSpec">
+      <property name="targetOperation" value="execute"/>
+      <property name="HTTPHeadersAdded" value="true"/>
+      <property name="HttpVerb" value="GET"/>
+      <property name="QueryParameters" value="city"/>
+      <property name="ResourceURI" value="/weather"/>
+      <property name="ResponseElementNS" value="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity/types"/>
+      <property name="ResponseElementName" value="response-wrapper"/>
+      <property name="ResponseMediaType" value="application/json"/>
+      <property name="ResponseSample" value="{   &quot;city&quot; : &quot;Chicago&quot;,   &quot;long&quot;: 123.12,   &quot;lat&quot;: 1112.12,   &quot;temp&quot;: 284.31 }"/>
+      <property name="activationSpecClass" value="oracle.tip.adapter.cloud.CloudActivationSpec"/>
+      <property name="allowChangeDefaultNamespace" value="false"/>
+      <property name="copyFaultFromModel" value="true"/>
+      <property name="forceWsdlTypesBuild" value="true"/>
+      <property name="generateConnectivityPropertiesInboundRequest" value="RESTINREQ"/>
+      <property name="generateConnectivityPropertiesInboundResponse" value="RESTINRES"/>
+      <property name="generateInboundCredentials" value="true"/>
+      <property name="generatePartnerLink" value="false"/>
+      <property name="integrationSchemaNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST/types"/>
+      <property name="integrationWSDLNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST"/>
+      <property name="invocationStyle" value="REQUEST_RESPONSE"/>
+      <property name="isResponseRawBytes" value="false"/>
+      <property name="operations" value="default"/>
+      <property name="postQueryParamsAsContent" value="false"/>
+      <property name="responseJsonTopLevelArray" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+</adapter-config>

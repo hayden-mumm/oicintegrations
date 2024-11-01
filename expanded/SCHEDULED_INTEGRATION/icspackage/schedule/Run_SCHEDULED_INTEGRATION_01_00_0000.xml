@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schedule name="Run_SCHEDULED_INTEGRATION_01_00_0000" xsi:schemaLocation="http://xmlns.oracle.com/scheduler" xmlns="http://xmlns.oracle.com/scheduler" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <display-name>Run_SCHEDULED_INTEGRATION_01_00_0000</display-name>
+    <recurrence>
+        <frequency>MINUTELY</frequency>
+        <interval>240</interval>
+        <start>2024-10-24 23:31:10.184 Asia/Calcutta</start>
+        <count>0</count>
+        <months-of-year></months-of-year>
+        <weeks-of-month></weeks-of-month>
+        <days-of-month></days-of-month>
+        <days-of-week></days-of-week>
+    </recurrence>
+    <time-zone>Asia/Calcutta</time-zone>
+</schedule>

@@ -1,0 +1,203 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns3:icsproject xmlns:ns3="http://www.oracle.com/2014/03/ics/project" name="project_1" version="9.9" cversion="5" modelType="freeform" xmlns="http://www.oracle.com/2014/03/ics/project/definition" xmlns:ns2="http://www.oracle.com/2014/03/ics/flow/definition">
+    <projectCode>CITY_WEATHER_I</projectCode>
+    <projectVersion>01.00.0000</projectVersion>
+    <projectName>City Weather_I</projectName>
+    <projectDescription/>
+    <percentComplete>100</percentComplete>
+    <projectHasErrors>false</projectHasErrors>
+    <projectHasWarnings>true</projectHasWarnings>
+    <ns3:icsflow name="flow_1">
+        <ns2:application name="application_13">
+            <ns2:role>source</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>OPENWEATHERMAP2</ns2:code>
+                <ns2:name>GetWeatherForCity</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:outbound name="outbound_14">
+                <ns2:binding>rest</ns2:binding>
+                <ns2:operation>execute</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_15">
+                    <ns2:resource name="resource_17" location="../resources/application_13/outbound_14/resourcegroup_15/GetWeatherForCity_REQUEST.wsdl" type="wsdl"/>
+                    <ns2:resource name="resource_66" location="../resources/application_13/outbound_14/resourcegroup_15/GetWeatherForCity_REQUEST.jca" type="jca"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_19">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_18"/>
+                </ns2:input>
+                <ns2:input name="input_23">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_22"/>
+                </ns2:input>
+                <ns2:output name="output_21">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_20"/>
+                </ns2:output>
+            </ns2:outbound>
+        </ns2:application>
+        <ns2:application name="application_67">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>OPENWEATHERMAP3</ns2:code>
+                <ns2:name>GetWeather</ns2:name>
+                <ns2:description>City Weather 3 - 341</ns2:description>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_68">
+                <ns2:binding>rest</ns2:binding>
+                <ns2:operation>execute</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_69">
+                    <ns2:resource name="resource_72" location="../resources/application_67/inbound_68/resourcegroup_69/GetWeather_REQUEST.wsdl" type="wsdl"/>
+                    <ns2:resource name="resource_84" location="../resources/application_67/inbound_68/resourcegroup_69/GetWeather_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_85" location="../resources/application_67/inbound_68/resourcegroup_69/ICSFault.xsd" type="xsd"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_74">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_73"/>
+                </ns2:input>
+                <ns2:output name="output_76">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_75"/>
+                </ns2:output>
+                <ns2:output name="output_78">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_77"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:processor name="processor_1">
+            <ns2:type>integrationMetadata</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2">
+                <ns2:resource name="resource_3" location="../resources/processor_1/resourcegroup_2/ICSIntegrationMetadata.xsd" type="xsd"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_5">
+                <ns2:messageContextRef refUri="messagecontext_4"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_6">
+            <ns2:type>messageTracker</ns2:type>
+            <ns2:role>messageTracker:global</ns2:role>
+            <ns2:trackingVariableGroup>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_1</ns2:role>
+                    <ns2:primary>true</ns2:primary>
+                    <ns2:name>city</ns2:name>
+                    <ns2:xpath>/execute/QueryParameters/city</ns2:xpath>
+                    <ns2:messageContextRef refUri="messagecontext_20"/>
+                    <ns2:output name="output_8">
+                        <ns2:messageContextRef refUri="messagecontext_7"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_2</ns2:role>
+                    <ns2:primary>false</ns2:primary>
+                    <ns2:name>tracking_var_2</ns2:name>
+                    <ns2:messageContextRef refUri="messagecontext_20"/>
+                    <ns2:output name="output_10">
+                        <ns2:messageContextRef refUri="messagecontext_9"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_3</ns2:role>
+                    <ns2:primary>false</ns2:primary>
+                    <ns2:name>tracking_var_3</ns2:name>
+                    <ns2:messageContextRef refUri="messagecontext_20"/>
+                    <ns2:output name="output_12">
+                        <ns2:messageContextRef refUri="messagecontext_11"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+            </ns2:trackingVariableGroup>
+        </ns2:processor>
+        <ns2:processor name="processor_79">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_82">
+                <ns2:resource name="resource_83" location="../resources/processor_79/resourcegroup_82/req_d6fffd24c3bb49189bb261a552446477.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_4">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>self</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_7">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_1</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_9">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_2</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_11">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_3</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_80">
+                <ns2:messageContextRef refUri="messagecontext_20"/>
+            </ns2:input>
+            <ns2:output name="output_81">
+                <ns2:messageContextRef refUri="messagecontext_73"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="false"/>
+        </ns2:processor>
+        <ns2:messageContext name="messagecontext_4">
+            <ns2:resourceRef refUri="processor_1/resourcegroup_2/resource_3"/>
+            <ns2:rootElement elementName="metadata" namespace="http://www.oracle.com/2014/03/ic/integration/metadata"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_7">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_9">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_11">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_18">
+            <ns2:resourceRef refUri="application_13/outbound_14/resourcegroup_15/resource_17"/>
+            <ns2:rootElement elementName="executeResponse" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_20">
+            <ns2:resourceRef refUri="application_13/outbound_14/resourcegroup_15/resource_17"/>
+            <ns2:rootElement elementName="execute" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_22">
+            <ns2:resourceRef refUri="application_13/outbound_14/resourcegroup_15/resource_17"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/GetWeatherForCity"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeatherForCity_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_73">
+            <ns2:resourceRef refUri="application_67/inbound_68/resourcegroup_69/resource_72"/>
+            <ns2:rootElement elementName="execute" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_75">
+            <ns2:resourceRef refUri="application_67/inbound_68/resourcegroup_69/resource_72"/>
+            <ns2:rootElement elementName="executeResponse" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_77">
+            <ns2:resourceRef refUri="application_67/inbound_68/resourcegroup_69/resource_72"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/GetWeather"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:commonNamespaceMaps/>
+        <ns2:orchestration>
+            <ns2:integrationMetadata id="im0" refUri="processor_1"/>
+            <ns2:receive trackingRefUri="processor_6" id="r0" refUri="application_13/outbound_14/output_21"/>
+            <ns2:transformer id="m0" refUri="processor_79"/>
+            <ns2:invoke id="i0" refUri="application_67"/>
+            <ns2:reply id="y0" refUri="application_13/outbound_14/input_19"/>
+        </ns2:orchestration>
+    </ns3:icsflow>
+</ns3:icsproject>

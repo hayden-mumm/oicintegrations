@@ -1,0 +1,30 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/echoRequest_REQUEST/types" name="echoRequest_REQUESTPortType" adapter="rest" wsdlLocation="echoRequest_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.rest.RestAdapterConnectionFactory">
+      <property name="cloud.adapter.plugin.version" value="17.2.3"/>
+      <property name="cloud.adapter.sdk.version" value="17.2.3"/>
+      <property name="rest.inbound.security.configurable" value="true"/>
+      <property name="security" value="oracle/multi_token_rest_service_policy"/>
+      <property name="securityPolicy" value="MULTI_TOKEN_INBOUND"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-activation portType="echoRequest_REQUESTPortType" operation="execute">
+    <activation-spec className="oracle.tip.adapter.cloud.CloudActivationSpec">
+      <property name="targetOperation" value="execute"/>
+      <property name="operationPath" value="http://xmlns.oracle.com/cloud/adapter/REST/echoRequest_REQUEST/execute"/>
+      <property name="HTTPHeadersAdded" value="true"/>
+      <property name="HttpVerb" value="GET"/>
+      <property name="QueryParameters" value=""/>
+      <property name="ResourceURI" value="/{message}"/>
+      <property name="ResponseElementNS" value="http://xmlns.oracle.com/cloud/adapter/REST/echoRequest/types"/>
+      <property name="ResponseElementName" value="response-wrapper"/>
+      <property name="ResponseMediaType" value="application/json"/>
+      <property name="ResponseSample" value="{ &quot;Message&quot;:&quot;message&quot;, &quot;Welcome&quot;:&quot;Welcome to ICS!&quot;}"/>
+      <property name="generatePartnerLink" value="false"/>
+      <property name="operationPath" value="http://xmlns.oracle.com/cloud/adapter/REST/echoRequest_REQUEST/execute"/>
+      <property name="postQueryParamsAsContent" value="false"/>
+      <property name="responseJsonTopLevelArray" value="false"/>
+      <property name="targetOperation" value="execute"/>
+    </activation-spec>
+  </endpoint-activation>
+</adapter-config>

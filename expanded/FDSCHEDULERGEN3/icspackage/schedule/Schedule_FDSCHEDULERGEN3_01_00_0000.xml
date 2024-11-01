@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schedule name="Schedule_FDSCHEDULERGEN3_01_00_0000" xsi:schemaLocation="http://xmlns.oracle.com/scheduler" xmlns="http://xmlns.oracle.com/scheduler" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <display-name>Schedule FDSCHEDULERGEN3_01_00_0000</display-name>
+    <recurrence>
+        <interval>1</interval>
+        <count>0</count>
+        <months-of-year></months-of-year>
+        <weeks-of-month></weeks-of-month>
+        <days-of-month></days-of-month>
+        <days-of-week></days-of-week>
+        <ical-expression>FREQ=MONTHLY;BYMONTHDAY=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31;BYHOUR=16,18,20,22,00,6;BYMINUTE=25;</ical-expression>
+    </recurrence>
+    <time-zone>Asia/Calcutta</time-zone>
+</schedule>
