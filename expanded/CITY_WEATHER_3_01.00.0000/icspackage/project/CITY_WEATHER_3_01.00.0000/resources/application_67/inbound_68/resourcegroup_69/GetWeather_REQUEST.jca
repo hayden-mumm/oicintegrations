@@ -1,0 +1,34 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST/types" name="GetWeather_REQUESTPortType" adapter="REST" wsdlLocation="GetWeather_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.rest.RestAdapterConnectionFactory">
+      <property name="cloud.adapter.plugin.version" value="23.3.5"/>
+      <property name="cloud.adapter.sdk.version" value="23.3.5"/>
+      <property name="connectionUrl" value="%%OPENWEATHERMAP3_connectionUrl"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+      <property name="csfkey" value="922bc3d818ca81d7021abccc1f84eda41cbda8530dea430e2e2da5b2364b42ce"/>
+      <property name="privateEndpoint" value="false"/>
+      <property name="securityPolicy" value="CUSTOM_SINGLE_TOKEN"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-interaction portType="GetWeather_REQUESTPortType" operation="execute">
+    <interaction-spec className="oracle.tip.adapter.cloud.CloudInteractionSpec">
+      <property name="targetOperation" value="execute"/>
+      <property name="HTTPHeadersAdded" value="true"/>
+      <property name="HttpVerb" value="GET"/>
+      <property name="ResourceURI" value="/weather"/>
+      <property name="allowChangeDefaultNamespace" value="false"/>
+      <property name="copyFaultFromModel" value="true"/>
+      <property name="forceWsdlTypesBuild" value="true"/>
+      <property name="generateConnectivityPropertiesOutboundRequest" value="RESTOUTREQ"/>
+      <property name="generateConnectivityPropertiesOutboundResponse" value="RESTOUTRES"/>
+      <property name="generatePartnerLink" value="false"/>
+      <property name="integrationSchemaNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST/types"/>
+      <property name="integrationWSDLNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST"/>
+      <property name="interactionSpecClass" value="oracle.tip.adapter.cloud.CloudInteractionSpec"/>
+      <property name="invocationStyle" value="REQUEST_RESPONSE"/>
+      <property name="operations" value="default"/>
+      <property name="postQueryParamsAsContent" value="false"/>
+      <property name="restEndpointDescription" value="City Weather 3 - 341"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

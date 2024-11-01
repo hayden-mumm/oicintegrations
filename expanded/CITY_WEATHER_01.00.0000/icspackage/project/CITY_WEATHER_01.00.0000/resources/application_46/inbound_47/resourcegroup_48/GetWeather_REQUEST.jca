@@ -1,0 +1,42 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST/types" name="GetWeather_REQUESTPortType" adapter="REST" wsdlLocation="GetWeather_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.rest.RestAdapterConnectionFactory">
+      <property name="cloud.adapter.plugin.version" value="23.3.5"/>
+      <property name="cloud.adapter.sdk.version" value="23.3.5"/>
+      <property name="connectionUrl" value="%%OPENWEATHERMAP2_connectionUrl"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+      <property name="csfkey" value="3db7c00cd0529c96c8f061f556c633a09266133790d0bf49d23c1bde1840cb4d"/>
+      <property name="privateEndpoint" value="false"/>
+      <property name="securityPolicy" value="CUSTOM_SINGLE_TOKEN"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-interaction portType="GetWeather_REQUESTPortType" operation="execute">
+    <interaction-spec className="oracle.tip.adapter.cloud.CloudInteractionSpec">
+      <property name="targetOperation" value="execute"/>
+      <property name="HTTPHeadersAdded" value="true"/>
+      <property name="HttpVerb" value="GET"/>
+      <property name="QueryParameters" value="q"/>
+      <property name="ResourceURI" value="/data/2.5/weather"/>
+      <property name="ResponseElementNS" value="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather/types"/>
+      <property name="ResponseElementName" value="response-wrapper"/>
+      <property name="ResponseMediaType" value="application/json"/>
+      <property name="ResponseSample" value="{     &quot;coord&quot;: {         &quot;lon&quot;: -0.1257,         &quot;lat&quot;: 51.5085     },     &quot;weather&quot;: [         {             &quot;id&quot;: 804,             &quot;main&quot;: &quot;Clouds&quot;,             &quot;description&quot;: &quot;overcast clouds&quot;,             &quot;icon&quot;: &quot;04n&quot;         }     ],     &quot;base&quot;: &quot;stations&quot;,     &quot;main&quot;: {         &quot;temp&quot;: 284.45,         &quot;feels_like&quot;: 283.83,         &quot;temp_min&quot;: 283.57,         &quot;temp_max&quot;: 285.45,         &quot;pressure&quot;: 1016,         &quot;humidity&quot;: 84     },     &quot;visibility&quot;: 10000,     &quot;wind&quot;: {         &quot;speed&quot;: 5.14,         &quot;deg&quot;: 230     },     &quot;clouds&quot;: {         &quot;all&quot;: 100     },     &quot;dt&quot;: 1672944171,     &quot;sys&quot;: {         &quot;type&quot;: 2,         &quot;id&quot;: 2075535,         &quot;country&quot;: &quot;GB&quot;,         &quot;sunrise&quot;: 1672905922,         &quot;sunset&quot;: 1672934741     },     &quot;timezone&quot;: 0,     &quot;id&quot;: 2643743,     &quot;name&quot;: &quot;London&quot;,     &quot;cod&quot;: 200 }"/>
+      <property name="allowChangeDefaultNamespace" value="false"/>
+      <property name="copyFaultFromModel" value="true"/>
+      <property name="forceWsdlTypesBuild" value="true"/>
+      <property name="generateConnectivityPropertiesOutboundRequest" value="RESTOUTREQ"/>
+      <property name="generateConnectivityPropertiesOutboundResponse" value="RESTOUTRES"/>
+      <property name="generatePartnerLink" value="false"/>
+      <property name="integrationSchemaNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST/types"/>
+      <property name="integrationWSDLNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/GetWeather_REQUEST"/>
+      <property name="interactionSpecClass" value="oracle.tip.adapter.cloud.CloudInteractionSpec"/>
+      <property name="invocationStyle" value="REQUEST_RESPONSE"/>
+      <property name="isResponseJsonSchema" value="false"/>
+      <property name="isResponseRawBytes" value="false"/>
+      <property name="operations" value="default"/>
+      <property name="postQueryParamsAsContent" value="false"/>
+      <property name="responseJsonTopLevelArray" value="false"/>
+      <property name="restEndpointDescription" value="Retrieves Weather Data - 244"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

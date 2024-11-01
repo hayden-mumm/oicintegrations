@@ -1,1 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?><ns0:icsproject xmlns="http://www.oracle.com/2014/03/ics/flow/definition" xmlns:ns0="http://www.oracle.com/2014/03/ics/project" xmlns:ns1="http://www.oracle.com/2014/03/ics/project/definition" name="project_1" version="8.1" cversion="0" modelType="freeform">   <ns1:projectCode>SCHEDULED_INTEGRATION</ns1:projectCode>   <ns1:projectVersion>01.00.0000</ns1:projectVersion>   <ns1:projectName>SCHEDULED INTEGRATION</ns1:projectName>   <ns1:percentComplete>100</ns1:percentComplete>   <ns1:projectHasErrors>false</ns1:projectHasErrors>   <ns1:projectHasWarnings>false</ns1:projectHasWarnings>   <ns0:icsflow name="flow_1">      <processor name="processor_6">         <type>messageTracker</type>         <role>messageTracker:global</role>         <trackingVariableGroup>            <trackingVariable>               <role>tracking_var_1</role>               <primary>true</primary>               <name>start Time</name>               <xpath>/schedule/startTime</xpath>               <messageContextRef refUri="messagecontext_16"/>               <output name="output_8">                  <messageContextRef refUri="messagecontext_7"/>               </output>            </trackingVariable>            <trackingVariable>               <role>tracking_var_2</role>               <primary>false</primary>               <name>tracking_var_2</name>               <xpath></xpath>               <messageContextRef refUri="messagecontext_16"/>               <output name="output_10">                  <messageContextRef refUri="messagecontext_9"/>               </output>            </trackingVariable>            <trackingVariable>               <role>tracking_var_3</role>               <primary>false</primary>               <name>tracking_var_3</name>               <xpath></xpath>               <messageContextRef refUri="messagecontext_16"/>               <output name="output_12">                  <messageContextRef refUri="messagecontext_11"/>               </output>            </trackingVariable>         </trackingVariableGroup>      </processor>      <processor name="processor_13">         <type>scheduleReceive</type>         <role>undefined</role>         <resourceGroup name="resourcegroup_14">            <resource name="resource_15" location="../resources/processor_13/resourcegroup_14/ICSSchedule_1.xsd" type="xsd"/>         </resourceGroup>         <resourceGroup name="resourcegroup_39">            <role>exprBuilderProperties</role>            <resource name="resource_40" location="../resources/processor_13/resourcegroup_39/expr.properties" type="properties"/>         </resourceGroup>         <output name="output_17">            <messageContextRef refUri="messagecontext_16"/>         </output>      </processor>      <processor name="processor_46">         <type>typeDefinitions</type>         <role>undefined</role>         <resourceGroup name="resourcegroup_47">            <resource name="resource_48" location="../resources/processor_46/resourcegroup_47/ICSFault.xsd" type="xsd"/>         </resourceGroup>         <rootElement elementName="faults" namespace="http://www.oracle.com/2014/03/ics/fault"/>      </processor>      <processor name="processor_49">         <type>assignment</type>         <role>undefined</role>         <resourceGroup name="resourcegroup_58">            <resource name="resource_59" location="../resources/processor_49/resourcegroup_58/expr.properties" type="properties"/>         </resourceGroup>         <resourceRef refUri="messagecontext_16">            <role>primary-source</role>         </resourceRef>         <output name="output_53">            <messageContextRef refUri="messagecontext_52"/>         </output>      </processor>      <messageContext name="messagecontext_7">         <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>      </messageContext>      <messageContext name="messagecontext_9">         <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>      </messageContext>      <messageContext name="messagecontext_11">         <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>      </messageContext>      <messageContext name="messagecontext_16">         <resourceRef refUri="processor_13/resourcegroup_14/resource_15"/>         <rootElement elementName="schedule" namespace="http://www.oracle.com/2014/03/ics/schedule"/>      </messageContext>      <messageContext name="messagecontext_52">         <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>      </messageContext>      <commonNamespaceMaps/>      <orchestration>         <scheduleReceive id="sr0" refUri="processor_13" trackingRefUri="processor_6"/>         <label id="l0" name="a123">            <assignment id="a0" refUri="processor_49"/>         </label>         <stop id="st0"/>      </orchestration>   </ns0:icsflow></ns0:icsproject>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:icsproject name="project_1" version="10.1" cversion="0" modelType="freeform" xmlns="http://www.oracle.com/2014/03/ics/project/definition" xmlns:ns2="http://www.oracle.com/2014/03/ics/flow/definition" xmlns:ns3="http://www.oracle.com/2014/03/ics/project">
+    <projectCode>SCHEDULED_INTEGRATION</projectCode>
+    <projectVersion>01.00.0000</projectVersion>
+    <projectName>SCHEDULED INTEGRATION</projectName>
+    <percentComplete>100</percentComplete>
+    <projectHasErrors>false</projectHasErrors>
+    <projectHasWarnings>false</projectHasWarnings>
+    <ns3:icsflow name="flow_1">
+        <ns2:processor name="processor_6">
+            <ns2:type>messageTracker</ns2:type>
+            <ns2:role>messageTracker:global</ns2:role>
+            <ns2:trackingVariableGroup>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_1</ns2:role>
+                    <ns2:primary>true</ns2:primary>
+                    <ns2:name>start Time</ns2:name>
+                    <ns2:xpath>/schedule/startTime</ns2:xpath>
+                    <ns2:messageContextRef refUri="messagecontext_16"/>
+                    <ns2:output name="output_8">
+                        <ns2:messageContextRef refUri="messagecontext_7"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_2</ns2:role>
+                    <ns2:primary>false</ns2:primary>
+                    <ns2:name>tracking_var_2</ns2:name>
+                    <ns2:xpath></ns2:xpath>
+                    <ns2:messageContextRef refUri="messagecontext_16"/>
+                    <ns2:output name="output_10">
+                        <ns2:messageContextRef refUri="messagecontext_9"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_3</ns2:role>
+                    <ns2:primary>false</ns2:primary>
+                    <ns2:name>tracking_var_3</ns2:name>
+                    <ns2:xpath></ns2:xpath>
+                    <ns2:messageContextRef refUri="messagecontext_16"/>
+                    <ns2:output name="output_12">
+                        <ns2:messageContextRef refUri="messagecontext_11"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+            </ns2:trackingVariableGroup>
+        </ns2:processor>
+        <ns2:processor name="processor_13">
+            <ns2:type>scheduleReceive</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_14">
+                <ns2:resource name="resource_15" location="../resources/processor_13/resourcegroup_14/ICSSchedule_1.xsd" type="xsd"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_39">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_40" location="../resources/processor_13/resourcegroup_39/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_17">
+                <ns2:messageContextRef refUri="messagecontext_16"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_46">
+            <ns2:type>typeDefinitions</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_47">
+                <ns2:resource name="resource_48" location="../resources/processor_46/resourcegroup_47/ICSFault.xsd" type="xsd"/>
+            </ns2:resourceGroup>
+            <ns2:rootElement elementName="faults" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+        </ns2:processor>
+        <ns2:processor name="processor_49">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_58">
+                <ns2:resource name="resource_59" location="../resources/processor_49/resourcegroup_58/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_16">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:output name="output_53">
+                <ns2:messageContextRef refUri="messagecontext_52"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:messageContext name="messagecontext_7">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_9">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_11">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_16">
+            <ns2:resourceRef refUri="processor_13/resourcegroup_14/resource_15"/>
+            <ns2:rootElement elementName="schedule" namespace="http://www.oracle.com/2014/03/ics/schedule"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_52">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:commonNamespaceMaps/>
+        <ns2:orchestration>
+            <ns2:scheduleReceive trackingRefUri="processor_6" id="sr0" refUri="processor_13"/>
+            <ns2:label id="l0" name="a123">
+                <ns2:assignment id="a0" refUri="processor_49"/>
+            </ns2:label>
+            <ns2:stop id="st0"/>
+        </ns2:orchestration>
+    </ns3:icsflow>
+</ns3:icsproject>
