@@ -198,20 +198,6 @@
                 <messageContextRef refUri="messagecontext_1173"/>
             </output>
         </processor>
-        <processor name="processor_1175">
-            <type>activityStreamLogger</type>
-            <role>undefined</role>
-            <resourceGroup name="resourcegroup_1178">
-                <role>exprBuilderProperties</role>
-                <resource name="resource_1179" location="../resources/processor_1175/resourcegroup_1178/expr.properties" type="properties"/>
-            </resourceGroup>
-            <resourceRef refUri="messagecontext_15">
-                <role>primary-source</role>
-            </resourceRef>
-            <property name="traceOnly" value="false"/>
-            <processorName>Logger1</processorName>
-            <processorDescription></processorDescription>
-        </processor>
         <messageContext name="messagecontext_2">
             <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
         </messageContext>
@@ -284,7 +270,6 @@
                 <route id="sc1" refUri="processor_47/output_64">
                     <activityStreamLogger id="lg1" refUri="processor_163"/>
                     <transformer id="m1" refUri="processor_362"/>
-                    <activityStreamLogger id="lg2" refUri="processor_1175"/>
                 </route>
             </router>
             <reply id="y0" refUri="application_8/outbound_9/input_14"/>
