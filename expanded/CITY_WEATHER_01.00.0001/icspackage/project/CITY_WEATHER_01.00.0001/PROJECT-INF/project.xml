@@ -44,7 +44,7 @@
                 <ns2:type>app-adapter</ns2:type>
                 <ns2:code>OPENWEATHERMAP2</ns2:code>
                 <ns2:name>GetWeather</ns2:name>
-                <ns2:description>Retrieves Weather Data - 344</ns2:description>
+                <ns2:description>Retrieves Weather Data - 345</ns2:description>
                 <ns2:property name="hasAttachment" value="false"/>
             </ns2:adapter>
             <ns2:mep>push-sync</ns2:mep>

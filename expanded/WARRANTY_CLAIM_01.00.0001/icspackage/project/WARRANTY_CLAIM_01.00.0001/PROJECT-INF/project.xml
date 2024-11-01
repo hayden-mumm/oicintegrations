@@ -3,8 +3,8 @@
     <ns2:projectCode>WARRANTY_CLAIM</ns2:projectCode>
     <ns2:projectVersion>01.00.0001</ns2:projectVersion>
     <ns2:projectName>Warranty Claim</ns2:projectName>
-    <ns2:percentComplete>0</ns2:percentComplete>
-    <ns2:projectHasErrors>true</ns2:projectHasErrors>
+    <ns2:percentComplete>100</ns2:percentComplete>
+    <ns2:projectHasErrors>false</ns2:projectHasErrors>
     <ns2:projectHasWarnings>false</ns2:projectHasWarnings>
     <ns3:icsflow name="flow_1">
         <application name="application_8">
@@ -201,9 +201,9 @@
         <processor name="processor_1175">
             <type>activityStreamLogger</type>
             <role>undefined</role>
-            <resourceGroup name="resourcegroup_1182">
+            <resourceGroup name="resourcegroup_1178">
                 <role>exprBuilderProperties</role>
-                <resource name="resource_1183" location="../resources/processor_1175/resourcegroup_1182/expr.properties" type="properties"/>
+                <resource name="resource_1179" location="../resources/processor_1175/resourcegroup_1178/expr.properties" type="properties"/>
             </resourceGroup>
             <resourceRef refUri="messagecontext_15">
                 <role>primary-source</role>
